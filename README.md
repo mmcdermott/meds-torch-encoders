@@ -14,6 +14,8 @@ We subdivide the modeling into the following steps:
 
 ```mermaid
 flowchart LR;
-    markdown[MEDS Dataset] --> markdown[`MEDSPytorchDataset`] --> B{markdown[`MEDSTorchBatch`]}
-    B -->|markdown[`InputEmbedder`]| E{markdown[`EmbeddedBatch`]}
+    R[MEDS Dataset] --> P{`MEDSPytorchDataset`} --> B{MEDSTorchBatch}
+    B -->|InputEncoder| E{ShallowEmbeddedBatch}
+    E -->|TrajectoryEncoder| T{DeepEmbeddedBatch}
+    B -->|CodesOnlyTrajectoryEncoder| T
 ```
